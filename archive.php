@@ -1,3 +1,4 @@
+<!--page for categories-->
 <?php get_header(); ?>
 
 <div class="container">
