@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-    <section>
+    <section> <!-- Explore Carousel -->
         <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
               <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -39,6 +39,31 @@
               <span class="visually-hidden">Next</span>
             </button>
           </div>
+    </section>
+    <section> <!-- Event Cards -->
+      <br/>
+      <div class="headtitle"><h1 class="display-4">Current Events</h1></div>
+      <div class="container" id="cards">
+      <?php 
+      $eventCards = new WP_Query(array(
+        'post_per_page' => 3,
+        'post_type' => 'event'
+      ));
+
+      while($eventCards->have_posts()) {
+        $eventCards->the_post(); ?>
+        
+        <div class="card" style="width: 18rem;">
+          <img src="..." class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"><?php the_title(); ?></h5>
+            <p class="card-text"><?php echo wp_trim_words(get_the_content(), 18); ?></p>
+            <a href="<?php the_permalink(); ?>" class="btn btn-success">View...</a>
+          </div>
+        </div> 
+      <?php }
+      ?>
+      </div> 
     </section>
 
 <?php get_footer(); ?>

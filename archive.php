@@ -2,10 +2,17 @@
 
 <div class="container">
     
-    <h1 class="display-4">Welcome to the Archives!</h1>
-    <p class="h4">Keep up with our latest news</p>
+    <h1 class="display-4"><?php if(is_category()) {
+        single_cat_title();
+    } 
+    if (is_author()) {
+        echo 'Posts by '; the_author();
+    } ?></h1>
+    <p class="h4">Keep updated to our latest post.</p>
+    </br>
+    
     <div class="container">
-        
+
         <?php
         while(have_posts()) {
         the_post(); ?>
@@ -20,9 +27,8 @@
         </br>
         <?php } ?>
         <?php echo paginate_links(); ?>
-        
+
     </div>
-    
 </div>
 
 <?php get_footer(); ?>
