@@ -19,7 +19,7 @@
                        href="<?php echo site_url('/about-northern-mindanao'); ?>">About</a>
                   </li>
                   <li class="nav-item">
-                  <a <?php if(is_page('events')) {
+                  <a <?php if(get_post_type() == 'event' OR is_page('past-events')) {
                       echo 'class="nav-link active"'; }else{ echo 'class="nav-link"'; } ?>
                        href="<?php echo site_url('/events'); ?>">Events</a>
                   </li>
@@ -44,7 +44,9 @@
                        href="<?php echo site_url('/category/restaurants'); ?>">Restaurants</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Places</a>
+                  <a <?php if(get_post_type() == 'place') {
+                      echo 'class="nav-link active"'; }else{ echo 'class="nav-link"'; } ?>
+                       href="<?php echo site_url('/places'); ?>">Places</a>
                   </li>
                   <li class="nav-item">
                     <a <?php if(get_post_type() == 'post') {
